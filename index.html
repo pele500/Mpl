@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>הצגת תפקיד מפתחת לומדה</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./main.css">
+    <script src="./main.js"></script>
+</head>
+
+<body>
+    <p id="text" class="allText">קיבלנו משימה להציג את הגדרת התפקיד שלנו בדרכים יצירתיות, וחשבתי לעצמי, איזה דרך יותר טובה מאשר לפתח
+        לומדה שמסבירה מה תפקידה של מפתחת לומדה במל"י?
+        <br/>
+        (תסלחו לי על העיצוב יש סיבה שנגה מעצבת לי הכל)
+    </p>
+    <button id="startBtn">מוכנות להתחיל?</button>
+
+    <div id="workFlowPage">
+        <p id="workText" class="allText">מה השלבים של תהליך פיתוח הלומדה?
+            <br/>
+            בלחיצה על כל אחד מהשלבים תוכלו לפתוח חלון שמפרט קצת על מה כולל בתוכו כל שלב.
+        </p>
+        <img src="./assets/media/workFlow.png" id="workFlow" alt="workFlow"/>
+        <div id="workFlowClickable">
+            <div class="steps" id="step1"></div>
+            <div class="steps" id="step2"></div>
+            <div class="steps" id="step3"></div>
+            <div class="steps" id="step4"></div>
+            <div class="steps" id="step5"></div>
+        </div>
+        <div id="stepDescription">
+            <img src="./assets/media/closeBtn.png" alt="סגור" id="closeStep"/>
+            <p id="underlineText"></p>
+            <p id="stepText"></p>
+        </div>
+        <div id="stepBackground"></div>
+    </div>
+
+    <img src="./assets/media/next.png" id="next" class="arrows" alt="הבא">
+    <img src="./assets/media/back.png" id="back" class="arrows" alt="הקודם">
+</body>
+
+</html>
