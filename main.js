@@ -15,7 +15,21 @@ const CONTENT = [`קיבלנו משימה להציג את הגדרת התפקי�
 על מפתחת הלומדה לדעת להתאים את התוצר לצורך ההדרכתי ולקהל היעד.
 לפעמים הצורך יהיה בלומדה שהיא נטו אינפורמטיבית ולפעמים יהיה צורך בלומדה משחקית יותר על מנת לעניין יותר את הלומדים שלנו.
 לפעמים צריך לשלב בדיחות ולפעמים עדיף להשאיר את הלומדה עניינת.
-`]
+`,``,
+`אז הבנו מה זה אומר לומדה ומה התפקיד כולל.
+אבל מה זה אומר להיות מפתחת לומדה במל"י?
+זה אומר שחוץ מפיתוח הלומדות שכולנו מכירות גם אתר מל"י נמצא תחת תחום האחריות של מפתחת הלומדה.
+מה זה אומר? 
+מפתחת הלומדה אחראית על תחזוק האתר ומתן הרשאות במידת הצורך.
+האתר הוכח כלא מספק מבחינת נפח אחסון ולכן זה נמצא בדיונים אצל מפקד מל"י ומתחיל תהליך שנקרא "מל"י דיגיטלי" ובעתיד כנראה שגם התהליך הזה יהיה תחת מפתחת הלומדה.
+`,
+`הגענו לסוף הלומדה.
+אפשר לחפור שעות על הגדרת התפקיד שלי.
+אבל כל הקטע בלומדה הוא לגרום לבן אדם שעובר אותה להישאר מעוניין ולא לשנוא את הלומדה.
+אז ויתרתי על הכניסה לפרטים הקטנים אבל נתתי לכן הצצה לתפקיד שלי ולמה שאני עושה ביום יום שלי.
+ותוך כדי שעשיתי את זה עשיתי את התפקיד שלי.
+מקווה שאהבתן :)
+`];
 
 const STEPS_TITLES = [`פגישת התנעה וגיבוש קונספט`,`פיצוח הדרכתי ובניית תיק מסכים ראשוני`,`עיצוב תיק המסכים וקבלת אישור`,`בניית הלומדה בקוד`,`הפצת הלומדה לשימוש`];
 const STEPS_CONTENT = [`ק' הצפ"ה ומפתחת הלומדה יושבות ביחד עם הלקוח לפגישה ראשונית.
@@ -63,8 +77,10 @@ startContent = () => {
 
 nextPage = () => {
     currPage++;
-    if(currPage <= 3){
+    if(currPage != 4){
         document.getElementById("text").innerText = CONTENT[currPage];
+        document.getElementById("text").style.visibility = "visible";
+        document.getElementById("workFlowPage").style.visibility = "hidden";
     } else {
         document.getElementById("text").style.visibility = "hidden";
         document.getElementById("workFlowPage").style.visibility = "visible";
@@ -74,6 +90,9 @@ nextPage = () => {
             document.getElementById("stepBackground").style.visibility = "hidden";})
         }
     }
+    if(currPage === (CONTENT.length)-1){
+        document.getElementById("next").style.visibility = "hidden";
+    }
 }
 
 back = () => {
@@ -82,8 +101,24 @@ back = () => {
         document.getElementById("startBtn").style.display = "block";
         document.getElementById("next").style.visibility = "hidden";
         document.getElementById("back").style.visibility = "hidden";
+        document.getElementById("text").innerText = CONTENT[currPage];
+    } else if(currPage == 4){
+        document.getElementById("text").style.visibility = "hidden";
+        document.getElementById("workFlowPage").style.visibility = "visible";
+        for(let i=1; i<= 5; i++){
+            document.getElementById(`step${i}`).addEventListener("click",openStep);
+            document.getElementById("closeStep").addEventListener("click", ()=>{ document.getElementById("stepDescription").style.visibility = "hidden";
+            document.getElementById("stepBackground").style.visibility = "hidden";})
+        }
+    } else {
+        document.getElementById("text").style.visibility = "visible";
+        document.getElementById("workFlowPage").style.visibility = "hidden";
+        document.getElementById("text").innerText = CONTENT[currPage];
     }
-    document.getElementById("text").innerText = CONTENT[currPage];
+    if(currPage === (CONTENT.length)-2){
+        document.getElementById("next").style.visibility = "visible";
+    }
+
 }
 
 openStep = (e) => {
